@@ -48,9 +48,7 @@ boardRouter.get("/:id",async function(req,res){
        }
        console.error(error) 
     }
-    
-
-    
+        
 })
 
 boardRouter.get("/",async function(req,res){
@@ -61,6 +59,29 @@ boardRouter.get("/",async function(req,res){
 
 })
 
+
+boardRouter.put("/:id",async function(req,res){
+    const id = req.params.id;
+    const {title,userId,elements} = req.body
+
+    // in the updateOne function , filter is passed as the first argument to look for the correct object in the database
+
+    try{
+        await boardModel.updateOne({
+            _id : id
+        },{
+            title,
+            elements,
+            userId
+        });
+
+        res.json({
+            message : "board updated"
+        })
+    }catch(e){
+        e
+    }
+})
 module.exports = {
     boardRouter:boardRouter
 }
