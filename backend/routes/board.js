@@ -81,6 +81,23 @@ boardRouter.put("/:id",async function(req,res){
     }catch(e){
         e
     }
+});
+
+boardRouter.delete("/:id",async function(req,res){
+    const id = req.params.id
+
+    try{
+        await boardModel.deleteOne({
+            _id:id
+        });
+
+        res.json({
+            message : "object deleted"
+        })
+    
+    }catch(e){
+        e
+    }
 })
 module.exports = {
     boardRouter:boardRouter
