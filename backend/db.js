@@ -11,6 +11,6 @@ const boardSchema = new mongoose.Schema({
     lastSaved : {type : Date, default:Date.now}
 });
 
-const boardModel = mongoose.model("Board",boardSchema);
+const boardModel = mongoose.model("boards",boardSchema);
 
 module.exports = {boardModel}
